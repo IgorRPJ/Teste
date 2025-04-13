@@ -1,0 +1,37 @@
+
+<div class="bg-warning py-2 px-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="m-0 text-white"> <a routerLink="/profile"><i class="bi bi-caret-left-fill"></i></a> Talento</h2>
+        <i class="bi bi-list fs-3" style="cursor: pointer;" (click)="return()"></i>
+    </div>
+</div>
+
+<div class="container mt-4"> 
+    <div class="mt-4">
+      <div class="d-flex align-items-start mb-3">
+        <div>
+          <img src="https://placehold.co/600x400" alt="Obra" class="rounded me-3">
+          <div class="mt-3">
+            <h4 class="fw-bold text-warning m-0">Nome de quem fez</h4>
+            <h5 class="fw-bold text-uppercase text-warning">Nome da obra</h5>
+            <p class="text-muted small">alguma coisa sobre a obra</p>
+          </div>
+        </div>
+        <div class="card shadow p-2 d-flex flex-column justify-content-between" style="margin-left: 10%; height: 80vh; max-width: 350px;">
+            <div style="overflow-y: auto; flex-grow: 1; margin-bottom: 1rem;">
+                <div class="border rounded p-2 mb-2" *ngFor="let item of lista">
+                    <i class="bi bi-person-circle me-2"></i>
+                    <p class="m-0">{{ item.texto }}</p>
+                </div>
+            </div>
+            <div>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-chat-left-dots"></i></span>
+                    <input type="text" class="form-control" placeholder="Comente aqui...">
+                    <button class="btn btn-warning">Enviar</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>

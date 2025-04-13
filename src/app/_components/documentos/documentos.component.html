@@ -1,0 +1,23 @@
+<div class="bg-warning py-2 px-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="m-0 text-white"> <a routerLink="/profile"><i class="bi bi-caret-left-fill"></i></a> Documentos</h2>
+        <i class="bi bi-list fs-3" style="cursor: pointer;" (click)="return()"></i>
+    </div>
+</div>
+
+<div class="container">
+        <div class="position-relative mb-4">
+            <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+            <input type="text" style="height: 50px;" class=" mt-5 form-control ps-5 bg-warning" placeholder="Pesquise aqui..."/>
+        </div>
+        <div class="row d-felx align-items-center">
+            <div class="col-12 col-md-4 mb-4 my-5 mt-5" *ngFor="let item of lista">
+            <div class="card shadow h-100 border-0">
+                <div class="card-body text-center bg-warning rounded" style="height: 300px;">
+                    <h5 class="card-title mt-3">{{ item.titulo }}</h5>
+                    <p class="card-text mt-5">{{ item.texto }}</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>

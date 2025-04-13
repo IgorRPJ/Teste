@@ -1,0 +1,30 @@
+<div class="bg-warning py-2 px-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="m-0 text-white"> <a routerLink="/profile"><i class="bi bi-caret-left-fill"></i></a> Conheça</h2>
+        <i class="bi bi-list fs-3" style="cursor: pointer;" (click)="return()"></i>
+    </div>
+</div>
+<div class="container-fluid p-0">
+    <div class="text-center py-4">
+      <h1 class="text-warning fw-bold display-5">COMUNICAÇÃO</h1>
+      <h3 class="text-secondary fw-bold">DICOM</h3>
+    </div>
+    <div class="container">
+        <div class="row mb-5" *ngFor="let membro of membros; let i = index">
+            <div class="col-2 d-flex justify-content-center align-items-start">
+                <div >
+                    <i class="bi bi-person-circle fs-1"></i>
+                </div>
+            </div>
+            <div class="col-10 position-relative">
+              <h4 class="text-warning fw-bold">NOME</h4>
+              <div class="text-muted fade-text" [class.expanded]="membro.expanded">
+                {{ membro.expanded ? membro.bio : (membro.bio | slice:0:180) + '...' }}
+              </div>
+              <div class="text-center text-warning fs-4 cursor-pointer" (click)="toggleExpand(i)">
+                {{ membro.expanded ? '⌃' : '⌄' }}
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

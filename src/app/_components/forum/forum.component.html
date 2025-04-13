@@ -1,0 +1,28 @@
+<div class="bg-warning py-2 px-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="m-0 text-white"> <a routerLink="/profile"><i class="bi bi-caret-left-fill"></i></a> Fórum</h2>
+        <i class="bi bi-list fs-3" style="cursor: pointer;" (click)="return()"></i>
+    </div>
+</div>
+
+<div class="container">
+    <p class="text-center mt-5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos magnam porro distinctio amet facere, voluptates nobis quis! Esse exercitationem totam doloribus ratione perspiciatis, id sint quis error obcaecati ea non.
+        Laborum impedit, eum non eaque quaerat exercitationem tempore vero ea possimus voluptas totam voluptatibus voluptates eligendi, delectus debitis repudiandae. Architecto, rem eaque animi maxime asperiores veritatis corrupti minima saepe vitae!
+        Doloremque mollitia delectus cupiditate nesciunt molestias, veritatis voluptatibus provident vel repellat nulla reiciendis est beatae impedit, nostrum veniam repudiandae! Non aspernatur eius in cupiditate a laborum pariatur, ipsa fuga nemo!
+        Obcaecati iste consequatur id nesciunt voluptatibus, rerum aut commodi, ea magnam nemo molestiae laborum! Dolores, natus, facilis distinctio unde dolor quam pariatur, quaerat ullam perspiciatis magnam rerum nulla. Rerum, consectetur.
+    </p>
+    <h2 class="text-center mt-5 text-warning fw-bold">Pauta: Pensando pensamentos <br> sobre pensadores pensantes.</h2>
+
+    <div class="row my-5">
+        <div class="col-12 col-md-4 mb-4" *ngFor="let item of lista">
+          <div class="card shadow h-100 border-0">
+            <div class="card-body text-center bg-warning rounded" style="height: 300px;">
+              <h5 class="card-title mt-3">{{ item.titulo }}</h5>
+              <p class="card-text mt-5">{{ item.texto }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

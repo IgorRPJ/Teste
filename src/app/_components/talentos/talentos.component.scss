@@ -1,0 +1,11 @@
+.container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    padding: 0px;
+}
+
+.container > div {
+    margin: 10px;
+    font-size: 30px;
+    text-align: center;
+}
