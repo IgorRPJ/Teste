@@ -1,27 +1,29 @@
 <div class="bg-warning py-2 px-3">
     <div class="d-flex justify-content-between align-items-center">
-        <h2 class="m-0 text-white"> <a routerLink="/profile"><i class="bi bi-caret-left-fill"></i></a> Nossos Talentos</h2>
-        <i class="bi bi-list fs-3" style="cursor: pointer;" (click)="return()"></i>
+        <h2 class="m-0 text-white"><a (click)="return()" style="cursor: pointer;"><i class="bi bi-caret-left-fill text-white"></i></a>Talentos</h2>
+        <!-- <i class="bi bi-list fs-3" style="cursor: pointer;"></i> -->
     </div>
-</div>
+  </div>
 
-<div>
-    <p class="p-5">
-        É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma
-página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que
-ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui"
-,
-
-fazendo com que ele tenha uma aparência similar a de um texto legível.    
-    </p>
-    <div class="" style="display: flex;">
-        <div class="container">
-            <div *ngFor="let item of lista" style="width: 300px;">
-                <div class="" style="display: flex; align-items: center;">
-                    <i class="bi bi-person-circle px-3"></i>
-                    <h3 class="text-warning">{{item.usuarioNome}}</h3>
+<div class="d-grid align-items-center">
+    <div class="container my-5 text-center">
+        <p class="fs-5 lh-lg text-secondary">
+            É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma
+            página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que
+            ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui",
+            fazendo com que ele tenha uma aparência similar a de um texto legível.
+        </p>
+    </div>
+    <div class="container mb-5">
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of lista">
+                <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                    <img [src]="item.img" class="card-img-top object-fit-cover" style="height: 250px;" alt="Imagem do talento">
+                    <div class="card-body text-center">
+                        <i class="bi bi-person-circle fs-3 text-warning"></i>
+                        <h5 class="card-title mt-2 fw-bold text-warning">{{ item.usuarioNome }}</h5>
+                    </div>
                 </div>
-                <img src={{item.img}} style="width: 100%;"/>
             </div>
         </div>
     </div>

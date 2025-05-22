@@ -1,0 +1,163 @@
+<div class="container py-5" *ngIf="templateId === 1">
+  <div class="mb-4">
+    <a (click)="return()" class="text-warning fw-bold" style="cursor: pointer;">
+      <i class="bi bi-caret-left-fill"></i> Voltar
+    </a>
+  </div>
+
+  <input
+    [(ngModel)]="novaNoticia.titulo"
+    type="text"
+    class="fw-bold display-5 mb-3"
+    style="width: 100%; height: auto; font-size: 35px; border: none; outline: none;"
+    placeholder="Título da notícia"
+  />
+
+  <!-- Upload da Imagem -->
+  <!-- <input
+    type="file"
+    (change)="onFileChange($event)"
+    class="form-control mb-3"
+  /> -->
+
+
+
+<div
+class="img-fluid rounded shadow-sm mb-4 d-flex justify-content-center align-items-center position-relative"
+style="height: 500px; width: 100%; border: 2px dashed #ccc; cursor: pointer; overflow: hidden;"
+(click)="imagemInput.click()"
+>
+
+<img
+  *ngIf="novaNoticia.imagem"
+  [src]="novaNoticia.imagem"
+  alt="Imagem da notícia"
+  style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"
+/>
+
+<span *ngIf="!novaNoticia.imagem" class="text-muted" style="z-index: 1;">
+  Clique para selecionar a imagem da notícia
+</span>
+
+  <input
+    #imagemInput
+    type="file"
+    accept="image/*"
+    style="display: none"
+    (change)="onFileChange($event)"
+  />
+  </div>
+
+
+    <textarea
+      [(ngModel)]="novaNoticia.texto"
+      rows="8"
+      class="lead w-100"
+      style="line-height: 1.8; border: none; outline: none; resize: none;"
+      placeholder="Escreva o texto da notícia aqui..."
+    ></textarea>
+
+    <button (click)="criarNoticia()" class="btn btn-warning mt-4">
+      Publicar Notícia
+    </button>
+  </div>
+
+
+    
+
+    
+
+
+
+<div class="container py-5" *ngIf="noticia && templateId === 2">
+  <div class="mb-4">
+    <a (click)="return()" class="text-warning fw-bold" style="cursor: pointer;">
+      <i class="bi bi-caret-left-fill"></i> Voltar
+    </a>
+  </div>
+
+  <h1 class="fw-bold display-5 mb-3">{{ noticia.titulo }}</h1>
+
+  <img
+    [src]="noticia.imagem"
+    alt="Imagem da notícia"
+    class="img-fluid rounded shadow-sm mb-4"
+    style="max-height: 500px; object-fit: cover; width: 100%;"/>
+
+
+  <p class="lead" style="line-height: 1.8;">
+    {{ noticia.texto }}
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+    <h2 class="text-center text-warning my-4">Criar Notícia com Template {{ templateId }}</h2>
+  
+    <form (ngSubmit)="criarNoticia()" #form="ngForm">
+  
+      <div class="mb-3">
+        <label for="titulo" class="form-label">Título</label>
+        <input type="text" id="titulo" class="form-control" [(ngModel)]="novaNoticia.titulo" name="titulo" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="texto" class="form-label">Texto</label>
+        <textarea id="texto" class="form-control" rows="5" [(ngModel)]="novaNoticia.texto" name="texto" required></textarea>
+      </div>
+  
+      <div class="mb-3">
+        <label for="imagem" class="form-label">Imagem</label>
+        <input type="file" id="imagem" class="form-control" (change)="onFileChange($event)">
+      </div>
+  
+      <button class="btn btn-success" type="submit">Criar Notícia</button>
+    </form>
+  </div>
+   -->

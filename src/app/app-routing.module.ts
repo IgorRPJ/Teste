@@ -14,6 +14,9 @@ import { TalentoComponent } from './_components/talento/talento.component';
 import { TalentosComponent } from './_components/talentos/talentos.component';
 import { ConhecaCargoComponent } from './_components/conheca-cargo/conheca-cargo.component';
 import { ProfileComponent } from './_components/profile/profile.component';
+import { LoginComponent } from './_components/login/login.component';
+import { AdminComponent } from './_components/admin/admin.component';
+import { TemplateComponent } from './_components/template/template.component';
 
 
 const routes: Routes = [
@@ -25,12 +28,16 @@ const routes: Routes = [
   { path: 'comunicacao', component: ComunicacaoComponent },
   { path: 'documentos', component: DocumentosComponent },
   { path: 'noticias', component: NoticiasComponent },
-  { path: 'noticia', component: NoticiaComponent },
+  { path: 'noticia/:id', component: NoticiaComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'talento', component: TalentoComponent },
   { path: 'talentos', component: TalentosComponent },
   { path: 'conheca/cargo', component: ConhecaCargoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'template/:id', component: TemplateComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

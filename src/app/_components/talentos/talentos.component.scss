@@ -1,11 +1,8 @@
-.container {
-    display: inline-grid;
-    grid-template-columns: auto auto auto;
-    padding: 0px;
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Efeito suave */
 }
 
-.container > div {
-    margin: 10px;
-    font-size: 30px;
-    text-align: center;
+.card:hover {
+    transform: scale(1.05); /* Aumenta o tamanho do card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efeito de profundidade */
 }

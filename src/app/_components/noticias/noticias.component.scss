@@ -1,0 +1,13 @@
+.list-group-item {
+    transition: background-color 0.2s ease-in-out;
+  
+    &:hover {
+      background-color: #f3f3f3;
+      cursor: pointer;
+    }
+  
+    h5 {
+      color: #c4170c;
+    }
+  }
+  

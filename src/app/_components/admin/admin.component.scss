@@ -1,0 +1,13 @@
+.template-card {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+.template-card {
+    transition: transform 0.3s ease;
+}
+  
+.template-card:hover {
+    transform: scale(1.05);
+    z-index: 2;
+}

@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { DataService } from '../../data.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-noticias',
@@ -7,46 +10,26 @@ import { Location } from '@angular/common';
   templateUrl: './noticias.component.html',
   styleUrl: './noticias.component.scss'
 })
-export class NoticiasComponent {
+export class NoticiasComponent implements OnInit{
 
-  lista: any = [
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-    {
-      img: 'https://placehold.co/600x400', titulo: 'Titulo', texto: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, eligendi cupiditate fugiat sint deleniti ipsam sequi velit, eius, ipsa iste vero? Quaerat exercitationem nam corrupti placeat ad! Ipsam, excepturi repellendus.'
-    },
-  ]
+  lista: any[] = [];
 
-  formatarTexto(texto: string): string {
-    return texto?.replace(/(.{100})/g, '$1<br>');
+  constructor(private location: Location, private dataService: DataService, private router: Router) {}
+
+  ngOnInit() {
+    // Aguardar o carregamento das notícias no DataService
+    this.dataService.noticias$.subscribe(data => {
+      this.lista = data;
+      console.log('Notícias recebidas:', data);
+    });
   }
 
-  constructor(private location: Location) {}
-
-  return(){
+  return() {
     this.location.back();
+  }
+
+  abrirNoticia(id: number) {
+    this.router.navigate(['/noticia', id]);
   }
 
 }

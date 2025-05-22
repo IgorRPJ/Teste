@@ -1,38 +1,27 @@
 <div class="bg-warning py-2 px-3">
     <div class="d-flex justify-content-between align-items-center">
-        <h2 class="m-0 text-white"> <a routerLink="/profile"><i class="bi bi-caret-left-fill"></i></a> Notícias</h2>
-        <i class="bi bi-list fs-3" style="cursor: pointer;" (click)="return()"></i>
+        <h2 class="m-0 text-white">Noticia</h2>
+        <!-- <i class="bi bi-list fs-3" style="cursor: pointer;"></i> -->
     </div>
 </div>
 
-<div class="container p-5">
-    <h1 class="title">Título</h1>
-    <div id="floated"><img></div>
-    É um fato conhecido de todos que um leitor se distrairá
-    com o conteúdo de texto legível de uma página
-    quando estiver examinando sua diagramação. A
-    vantagem de usar Lorem Ipsum é que ele tem uma
-    distribuição normal de letras, ao contrário de
-    "Conteúdo aqui, conteúdo aqui"
-    
-    , fazendo com que ele
-    tenha uma aparência similar a de um texto legível. Muitos softwares de É um fato conhecido de todos que
-    um leitor se distrairá com o conteúdo de texto legíveltu
-    É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto
-    legível de uma página quando estiver examinando sua diagramação. A vantagem de
-    usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de
-    "Conteúdo aqui, conteúdo aqui"
-    
-    , fazendo com que ele tenha uma aparência similar a
-    de um texto legível. Muitos softwares de publicação e editores de páginas. É um fato
-    conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de
-    uma página quando estiver examinando sua diagramação. A vantagem de usar
-    Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de
-    "Conteúdo aqui, conteúdo aqui"
-    
-    , fazendo com que ele tenha uma aparência similar a
-    de um texto legível. Muitos softwares de publicação e editores de páginas. É um fato
-    conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de
-    uma página quando estiver examinando sua diagramação. A vantagem de usar
-    Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de
+<div class="container py-5" *ngIf="noticia">
+  <div class="mb-4">
+    <a (click)="return()" class="text-warning fw-bold" style="cursor: pointer;">
+      <i class="bi bi-caret-left-fill"></i> Voltar
+    </a>
+  </div>
+
+  <h1 class="fw-bold display-5 mb-3">{{ noticia.titulo }}</h1>
+
+  <img
+    [src]="noticia.imagem"
+    alt="Imagem da notícia"
+    class="img-fluid rounded shadow-sm mb-4"
+    style="max-height: 500px; object-fit: cover; width: 100%;"/>
+
+
+  <p class="lead" style="line-height: 1.8;">
+    {{ noticia.texto }}
+  </p>
 </div>

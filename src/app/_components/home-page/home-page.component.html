@@ -1,31 +1,106 @@
 <div class="bg-warning py-3 text-white d-flex justify-content-between align-items-center px-4">
   <div class="d-flex align-items-center">
-    <img src="assets/logo.png" alt="Logo" style="width: 60px; height: 60px;" class="me-3">
+    <i class="bi bi-brilliance me-1 fs-3" style="width: 60px; height: 60px;"></i>
     <h1 class="h3 fw-bold m-0">GEMA</h1>
   </div>
   <div class="d-flex align-items-center gap-3">
-    <button class="btn btn-outline-light fw-bold"><a routerLink="/ouvidoria">OUVIDORIA</a></button>
-    <a routerLink="/profile"><i class="bi bi-person-circle fs-3"></i></a>
-    <a routerLink=""><i class="bi bi-search fs-3"></i></a>
-    <a routerLink=""><i class="bi bi-list fs-3"></i></a>
+    <button class="btn btn-outline-light fw-bold" id="preguica">
+      <a routerLink="/ouvidoria">OUVIDORIA</a>
+    </button>
+    <div class="d-flex align-items-center position-relative flex-grow-1">
+      <a routerLink="" (click)="toggleSearch()" class="me-3">
+        <i class="bi bi-search fs-3"></i>
+      </a>
+
+      <!------- >>>AREA DE PESQUISA<<<------->
+      <input *ngIf="showSearch"
+       [(ngModel)]="searchTerm"
+       (ngModelChange)="updateSuggestions()"
+       (keydown.enter)="filterNoticias()"
+       type="text"
+       class="form-control"
+       placeholder="Pesquisar..."
+       (blur)="adiarHideSearch()">
+
+       <!------- >>>FIM AREA DE PESQUISA<<<------->
+
+
+
+       <!------- >>>AREA DE SUGESTAO<<<------->
+        <div *ngIf="suggestedList.length > 0 && searchTerm" class="dropdown-suggestions">
+          <ul class="list-unstyled">
+            <li *ngFor="let noticia of suggestedList" 
+                (click)="onSelectNoticia(noticia)" 
+                class="dropdown-item">
+              {{ noticia.titulo }}
+            </li>
+          </ul>
+        </div>
+      <!------- >>>FIM DA AREA DE SUGESTAO<<<------->
+      
+
+
+
+    </div>
+    <a role="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
+      <i class="bi bi-list fs-3"></i>
+    </a>
   </div>
 </div>
+
 <div class="container-fluid">
+
+  <!------- >>>AREA DE BANNER<<<------->
     <div class="card border-0 shadow p-3 rounded bg-warning mx-auto" style="margin-top: 15vh; width: 78%;">
-        <div class="card-body mb-4 ">
-            <h3 class="fw-bold text-white d-flex justify-content-center align-items-center">Grêmio Estudantil Madalena Antunes</h3>
-        </div>
+      <div class="card-body mb-4 ">
+        <h3 class="fw-bold text-white d-flex justify-content-center align-items-center">Grêmio Estudantil Madalena Antunes</h3>
+      </div>
     </div>
-    <div class="row d-flex justify-content-center">
-        <div class="col-12 col-md-6" style="margin-top: 20vh;">
-        <h3 class="text-warning fw-bold h2">Notícias</h3>
-        <div class="d-grid gap-3" style="grid-template-columns: 1fr 1fr; width: 100%;">
-            <input type="button" value="Notícia {{i}}" class="btn btn-warning btn-lg border-0 rounded fw-bold h1" style="padding: 4vh;" *ngFor="let i of [1,2,3,4]">
-        </div>
-        </div>
-            <div class="col-md-6 w-25 ms-5" style="margin-top: 20vh;">
-                <h3 class="fw-bold text-warning h2">Nossos Talentos</h3>
-                <img src="https://picsum.photos/400/300" alt="Desenho" class="img-fluid rounded">
-            </div>
+  <!------- >>>FIM DA AREA DE SUGESTAO<<<------->
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-6" style="margin-top: 20vh;">
+      <h3 class="text-warning fw-bold h2">Notícias</h3>
+
+      <!------- >>>AREA DE NOTICIAS<<<------->
+      <div class="d-grid gap-3" style="grid-template-columns: 1fr 1fr; width: 100%;">
+        <input type="button" 
+          *ngFor="let noticia of noticiasAleatorias" 
+          [value]="noticia.titulo" 
+          class="btn btn-warning btn-lg border-0 rounded fw-bold h1" 
+          style="padding: 4vh;" 
+          (click)="viewNoticia(noticia)">
+      </div>      
+      <!------- >>>FIM DA AREA DE NOTICIAS<<<------->
+
     </div>
+
+    <!------- >>>AREA DE TALENTOS<<<------->
+      <div class="col-md-6 w-25 ms-5" style="margin-top: 14vh;">
+        <h3 class="fw-bold text-warning h2">Nossos Talentos</h3>
+        <img src="../../../assets/talentos-Placeholder.png" alt="Desenho" class="img-fluid rounded" style="height: 400px;">
+      </div>
+    <!------- >>>FIM DA AREA DE TALENTOS<<<------->
+
+  </div>
+      
+
+  <!------- >>>AREA DE ABAS<<<------->
+    <div class="offcanvas offcanvas-end text-white" tabindex="-1" id="menuLateral" style="background-color: #2C3E50;">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body d-flex flex-column gap-3">
+        <a routerLink="sobre" class="text-white fw-bold" (click)="closeOffcanvas()">Sobre</a>
+        <a routerLink="ouvidoria" class="text-white fw-bold" (click)="closeOffcanvas()">Ouvidoria</a>
+        <a routerLink="conheca" class="text-white fw-bold" (click)="closeOffcanvas()">Conheça</a>
+        <a routerLink="comunicacao" class="text-white fw-bold" (click)="closeOffcanvas()">Comunicação</a>
+        <a routerLink="documentos" class="text-white fw-bold" (click)="closeOffcanvas()">Documentos</a>
+        <a routerLink="noticias" class="text-white fw-bold" (click)="closeOffcanvas()">Notícias</a>
+        <a routerLink="feedback" class="text-white fw-bold" (click)="closeOffcanvas()">Feedback</a>
+        <a href="https://suap.ifrn.edu.br/accounts/login/?next=/" target="_blank" class="text-white fw-bold" (click)="closeOffcanvas()">Suap</a>
+      </div>
+    </div>
+  <!------- >>>FIM DA AREA DE ABAS<<<------->
 </div>

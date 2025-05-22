@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +20,11 @@ import { NoticiaComponent } from './_components/noticia/noticia.component';
 import { ForumComponent } from './_components/forum/forum.component';
 import { TalentoComponent } from './_components/talento/talento.component';
 import { ConhecaCargoComponent } from './_components/conheca-cargo/conheca-cargo.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './_components/admin/admin.component';
+import { LoginComponent } from './_components/login/login.component';
+import { TemplateComponent } from './_components/template/template.component';
+
 
 @NgModule({
   declarations: [
@@ -36,12 +43,16 @@ import { ConhecaCargoComponent } from './_components/conheca-cargo/conheca-cargo
     FeedbackComponent,
     ForumComponent,
     ConhecaCargoComponent,
-    FooterComponent
-    
+    FooterComponent,
+    AdminComponent,
+    LoginComponent,
+    TemplateComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

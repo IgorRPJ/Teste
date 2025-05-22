@@ -1,24 +1,29 @@
 <div class="bg-warning py-2 px-3">
-    <div class="d-flex justify-content-between align-items-center">
-        <h2 class="m-0 text-white"> <a routerLink="/profile"><i class="bi bi-caret-left-fill"></i></a> Notícias</h2>
-        <i class="bi bi-list fs-3" style="cursor: pointer;" (click)="return()"></i>
-    </div>
+  <div class="d-flex justify-content-between align-items-center">
+      <h2 class="m-0 text-white"><a (click)="return()" style="cursor: pointer;"><i class="bi bi-caret-left-fill text-white"></i></a>Notícias</h2>
+      <!-- <i class="bi bi-list fs-3" style="cursor: pointer;"></i> -->
+  </div>
 </div>
 
-<div class="container">
-    <div class="row d-flex align-items-center" style="margin-top: 7vh;">
-      <div class="col-12 col-md-12 mb-4 my-5 mt-1" *ngFor="let item of lista">
-        <div class="card shadow h-100 border-0">
-          <div class="card-body text-center rounded border border-warning border-3" style="height: 100px;">
-            <div class="d-flex justify-content-start align-items-start gap-3 text-start">
-              <img [src]="item.img" alt="" style="width: 100px; height: auto;" />
-              <div>
-                <h5 class="card-title mb-2">{{ item.titulo }}</h5>
-                <p class="card-text mb-0">{{ item.texto.slice(0, 100) }}{{ item.texto.length > 100 ? '...' : '' }}</p>
-              </div>
-            </div>
-          </div>
+<div class="container my-5">
+  <div class="list-group">
+    <div 
+      class="list-group-item list-group-item-action mb-4 shadow-sm rounded"
+      *ngFor="let item of lista"
+      (click)="abrirNoticia(item.id)"
+      style="cursor: pointer;">
+      
+      <div class="d-flex flex-column flex-md-row gap-3 align-items-start">
+        <img [src]="item.imagem" alt="Imagem da notícia" class="rounded" style="width: 200px; height: 130px; object-fit: cover;">
+        <div class="d-flex flex-column">
+          <h5 class="mb-2 fw-bold">{{ item.titulo }}</h5>
+          <p class="text-muted mb-0">
+            {{ item.texto.slice(0, 150) }}{{ item.texto.length > 150 ? '...' : '' }}
+          </p>
+          <p class="text-muted mt-2" style="font-size: 0.75rem;">{{ item.data }}</p>
         </div>
       </div>
+
     </div>
+  </div>
 </div>

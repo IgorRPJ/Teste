@@ -1,0 +1,68 @@
+<div class="d-flex flex-wrap justify-content-center align-items-center gap-4 mb-5" style="min-height: 70vh;">
+    <div *ngFor="let template of templates">
+      <a [routerLink]="['/template', template.id]" class="text-decoration-none">
+        <div class="card shadow-sm template-card" style="width: 300px;">
+          <img [src]="template.preview" alt="Preview do Template" style="width: 100%; max-width: 300px;">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{ template.nome }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h2 class="text-center text-warning my-4">Publicar Nova Notícia</h2>
+  
+<form (ngSubmit)="criarNoticia()" class="mb-5">
+    <div class="mb-3">
+    <label for="titulo" class="form-label text-warning">Título</label>
+    <input type="text" id="titulo" class="form-control" [(ngModel)]="novaNoticia.titulo" name="titulo" required>
+    </div>
+
+    <div class="mb-3">
+    <label for="texto" class="form-label text-warning">Texto da Notícia</label>
+    <textarea id="texto" class="form-control" [(ngModel)]="novaNoticia.texto" name="texto" rows="5" required></textarea>
+    </div>
+
+    <div class="mb-3">
+    <label for="imagem" class="form-label text-warning">Imagem</label>
+    <input type="file" class="form-control" (change)="onFileChange($event)" id="imagem" name="imagem">
+    </div>
+
+    <button type="submit" class="btn btn-warning w-100 mt-3">Publicar Notícia</button>
+</form> -->
